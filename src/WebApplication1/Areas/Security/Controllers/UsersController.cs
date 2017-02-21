@@ -54,6 +54,8 @@ namespace WebApplication1.Areas.Security.Controllers
              {
                  Id = user.Id,
                  FirstName = user.FirstName,
+                 MiddleName = user.MiddleName,
+                 ContactNo = user.ContactNo,
                  LastName = user.LastName,
                  Age = user.Age,
                  Gender = user.Gender
@@ -105,6 +107,8 @@ namespace WebApplication1.Areas.Security.Controllers
                     {
                         Id = Guid.NewGuid(),
                         FirstName = viewModel.FirstName,
+                        MiddleName = viewModel.MiddleName,
+                        ContactNo = viewModel.ContactNo,
                         LastName = viewModel.LastName,
                         Age = viewModel.Age,
                         Gender = viewModel.Gender,
@@ -145,11 +149,11 @@ namespace WebApplication1.Areas.Security.Controllers
         {
             try
             {
-                var u = Users.FirstOrDefault(user => user.Id == id);
+              /*  var u = Users.FirstOrDefault(user => user.Id == id);
                 u.FirstName = viewModel.FirstName;
                 u.LastName = viewModel.LastName;
                 u.Age = viewModel.Age;
-                u.Gender = viewModel.Gender;
+                u.Gender = viewModel.Gender;*/
 
                 return RedirectToAction("Index");
             }
@@ -162,8 +166,8 @@ namespace WebApplication1.Areas.Security.Controllers
         // GET: Security/Users/Delete/5
         public ActionResult Delete(Guid id)
         {
-            var u = Users.FirstOrDefault(user => user.Id == id);
-            return View(u);
+
+            return View(GetUser(id));
         }
 
         // POST: Security/Users/Delete/5
@@ -172,14 +176,38 @@ namespace WebApplication1.Areas.Security.Controllers
         {
             try
             {
-                var u = Users.FirstOrDefault(user => user.Id == id);
-                Users.Remove(u);
-                // TODO: Add delete logic here
+                   using (var db = new DatabaseContext())
+                   {
+                var s = db.Users.FirstOrDefault(user => user.Id == id);
+                db.Users.Remove(s);
+                db.SaveChanges();
+                   }
                 return RedirectToAction("Index");
-            }
+
+                   }
             catch
             {
                 return View();
+            }
+        }
+
+
+        private UserViewModel GetUser(Guid id)
+        {
+            using (var db = new DatabaseContext())
+            {
+                return (from user in db.Users
+                        where user.Id == id
+                        select new UserViewModel
+                        {
+                            Id = user.Id,
+                            FirstName = user.FirstName,
+                            MiddleName = user.MiddleName,
+                            ContactNo = user.ContactNo,
+                            LastName = user.LastName,
+                            Age = user.Age,
+                            Gender = user.Gender
+                        }).FirstOrDefault();
             }
         }
     }
