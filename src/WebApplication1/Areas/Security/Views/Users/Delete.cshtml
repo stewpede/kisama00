@@ -1,0 +1,70 @@
+﻿@model WebApplication1.Areas.Security.Models.UserViewModel
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<header class=" row content-header">
+    <div class=" col-md-6">
+        <h2>Users</h2>
+    </div>
+    <div class=" col-md-6 content-action">
+
+        <a href="@Url.Action("Index")" class="btn btn-link">
+            <span class="glyphicon glyphicon-arrow-left"></span>
+            Back to List
+        </a>
+    </div>
+</header>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+ 
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            First Name
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            Last Name
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            Age
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Age)
+        </dd>
+
+        <dt>
+            Gender
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gender)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <button type="submit" value="Delete" class="btn btn-danger">
+            <span class="glyphicon glyphicon-trash"></span>
+            Delete
+            </button>
+        </div>
+    }
+</div>
