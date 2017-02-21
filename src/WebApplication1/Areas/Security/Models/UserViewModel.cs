@@ -8,9 +8,7 @@ namespace WebApplication1.Areas.Security.Models
 {
     public class UserViewModel
     {
-        public Guid Id { get; set; }
-        
-       
+        public int Id { get; set; }
         [Required, MinLength(3, ErrorMessage = "Min of 3 characters")]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }

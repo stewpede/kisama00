@@ -10,40 +10,23 @@ namespace WebApplication1.Areas.Security.Controllers
 {
     public class UsersController : Controller
     {
-        private IList<UserViewModel> Users
+        public UsersController()
         {
-            get
-            {
-                if (Session["data"] == null)
+            var genders = new List<SelectListItem> {
+                new SelectListItem
                 {
-                    Session["data"] = new List<UserViewModel>(){
-                        new UserViewModel {
-
-                            Id = Guid.NewGuid(),
-                            FirstName = "Lem",
-                            LastName = "Muel",
-                            Age = 15,
-                            Gender = "Female"
-                        },
-                        new UserViewModel {
-
-                            Id = Guid.NewGuid(),
-                            FirstName = "Lem",
-                            LastName = "My",
-                            Age = 15,
-                            Gender = "Male"
-                        }
-                    };
-                } 
-                return Session["data"] as List<UserViewModel>; 
-            }
-            
-
+                    Value = "Male",
+                    Text = "Male"
+                },
+                new SelectListItem
+                {
+                    Value = "Female",
+                    Text = "Female"
+                }
+            };
+            ViewBag.Genders = genders;
         }
-        
 
-
-   
         // GET: Security/Users
         public ActionResult Index()
         {
@@ -67,10 +50,9 @@ namespace WebApplication1.Areas.Security.Controllers
         }
 
         // GET: Security/Users/Details/5
-        public ActionResult Details(Guid id)
+        public ActionResult Details(int id)
         {
-            var u = Users.FirstOrDefault(user => user.Id == id);
-            return View(u);
+            return View(GetUser(id));
         }
 
         // GET: Security/Users/Create
@@ -105,7 +87,7 @@ namespace WebApplication1.Areas.Security.Controllers
                 {
                     db.Users.Add(new User
                     {
-                        Id = Guid.NewGuid(),
+                       // Id = Guid.NewGuid(),
                         FirstName = viewModel.FirstName,
                         MiddleName = viewModel.MiddleName,
                         ContactNo = viewModel.ContactNo,
@@ -125,27 +107,14 @@ namespace WebApplication1.Areas.Security.Controllers
         }
 
         // GET: Security/Users/Edit/5
-        public ActionResult Edit(Guid id)
+        public ActionResult Edit(int id)
         {
-            var u = Users.FirstOrDefault(user => user.Id == id);
-            ViewBag.Genders = new List<SelectListItem>{
-                new SelectListItem
-                {
-                    Value = "Male",
-                    Text = "Male",
-                },
-                new SelectListItem
-                {
-                    Value = "Female",
-                    Text = "Female"
-                }
-            };
-            return View(u);
+            return View(GetUser(id));
         }
 
         // POST: Security/Users/Edit/5
         [HttpPost]
-        public ActionResult Edit(Guid id, UserViewModel viewModel)
+        public ActionResult Edit(int id, UserViewModel viewModel)
         {
             try
             {
@@ -164,15 +133,14 @@ namespace WebApplication1.Areas.Security.Controllers
         }
 
         // GET: Security/Users/Delete/5
-        public ActionResult Delete(Guid id)
+        public ActionResult Delete(int id)
         {
-
             return View(GetUser(id));
         }
 
         // POST: Security/Users/Delete/5
         [HttpPost]
-        public ActionResult Delete(Guid id, FormCollection collection)
+        public ActionResult Delete(int id, FormCollection collection)
         {
             try
             {
@@ -192,7 +160,7 @@ namespace WebApplication1.Areas.Security.Controllers
         }
 
 
-        private UserViewModel GetUser(Guid id)
+        private UserViewModel GetUser(int id)
         {
             using (var db = new DatabaseContext())
             {
@@ -200,7 +168,6 @@ namespace WebApplication1.Areas.Security.Controllers
                         where user.Id == id
                         select new UserViewModel
                         {
-                            Id = user.Id,
                             FirstName = user.FirstName,
                             MiddleName = user.MiddleName,
                             ContactNo = user.ContactNo,
