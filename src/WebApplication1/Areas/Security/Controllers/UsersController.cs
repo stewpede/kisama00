@@ -38,8 +38,6 @@ namespace WebApplication1.Areas.Security.Controllers
              {
                  Id = user.Id,
                  FirstName = user.FirstName,
-                 MiddleName = user.MiddleName,
-                 ContactNo = user.ContactNo,
                  LastName = user.LastName,
                  Age = user.Age,
                  Gender = user.Gender,
@@ -199,8 +197,6 @@ namespace WebApplication1.Areas.Security.Controllers
                         select new UserViewModel
                         {
                             FirstName = user.FirstName,
-                            MiddleName = user.MiddleName,
-                            ContactNo = user.ContactNo,
                             LastName = user.LastName,
                             Age = user.Age,
                             Gender = user.Gender,

@@ -1,13 +1,12 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
-    
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
@@ -16,69 +15,166 @@ select,
 textarea {
     max-width: 280px;
 }
-p.text {
-    font-size: 25px;
-    margin-bottom: -5px;
-}
 
-header.content-header {
+header.content-header{
 
-    margin-right: auto;
-    margin-left: auto;
-    margin-bottom: -1px;
-    border-bottom: 1px solid #dddddd;
-}
 
-header.head-margin {
-    margin-bottom: 20px;
-}
-.index-action {
-    padding-top: 16px;
+
 
 }
 
-.content-action {
-     padding-top: 16px;
+content-action{
+
+    padding-top:16px;
+
+    
+
 }
 
-.text-spacing {
-    padding-right: 25px;
-
+.btn.delete-btn-primary {
+ margin-left: 70px;
+    margin-top: 10px;
 }
-
-a.red {
-    color:#dd0000;
+.btn-success {
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+    margin-top: 30px;
 }
-.radio-margin {
+.btn.btn-text {
+    
+    margin-top: 30px;
+    margin-left: -50px;
+}
+a.btn.btn- {
+    color:white;
+ background-color: #2986ff;
+ margin-left: 1025px;
+}
+.btn-danger {
+    color: #fff;
+    background-color: #d9534f;
+    border-color: #d43f3a;
+    margin-left: 300px;
+  
+}
+.text.details-btn-link {
+
+    border-color: #357ebd;
+    margin-left: 330px;
     margin-top: 5px;
 }
-.panel-margin {
-    margin-right: 750px;
+.btn.detail-btn-text {
+    margin-left: 300px;
 }
-.panel-center {
-    margin-left: 350px;
-    margin-right: 350px;
-}
-.panel-header-text {
-    float: left;
-    display: block;
- 
-}
-.panel.button {
-    display:inline;
-    float:right;
 
+.btn.delete-btn-danger {
+    background-color: #d2322d;
+    border-color: #d43f3a;
+    color: white;
+    margin-top: 9px;
 }
-.resize {
-    width: 170px;
-    height: 170px;
-    float:left;
-    margin-right: 15px; 
+
+dl {
+    margin-bottom: 20px;
+    background-image: url("https://s15.postimg.org/m33fpj5nf/noprofile.png");
+    background-repeat: no-repeat;
+    background-size: 200px;
+    background-size: 150px;
+    width: 400px;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12) !important;
+    padding-bottom: 50px;
+    background-position: 10px;
 }
+.details-name {
+    margin-top: 20px;
+}
+dt {
+    font-weight: bold;
+    font: 0px;
+    font-size: 0px;
+}
+.detailes-dl-horizontal {
+    padding-bottom: 45px;
+    margin-left: 400px;
+     margin-bottom: 20px;
+    background-image: url("https://s15.postimg.org/m33fpj5nf/noprofile.png");
+    background-repeat: no-repeat;
+    background-size: 200px;
+    background-size: 150px;
+    width: 400px;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12) !important;
+    margin-top: 45px;
+    background-position: 10px 80px;
+   
+}
+.name1 {
+    margin-top: 30px;
+}
+
+.dl-horizontal dt {
+    float: left;
+    width: 160px;
+    overflow: hidden;
+    clear: left;
+    text-align: right;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0;
+}
+dd {
+    margin-left: 200px;
+}
+.dl-horizontal {
+    margin-left: 400px;
+}
+.content-action\; {
+    margin: auto;
+    font-size: 14px;
+    justify-content: center;
+    display: -moz-inline-box;
+}
+h2, .h2 {
+    font-size: 30px;
+    margin-top: 30px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
 th {
-    background-color: #00b4e5;
+    background-color: #4CAF50;
     color: white;
 }
-tr:nth-child(even){
-    background-color:#bfbfbf
+
+h3, .h3 {
+    font-size: 16px;
+    margin-left: 15px;
 }
+
+fieldset {
+    padding: 2px;
+    margin: 2px;
+   
+}
+
+.col-md-6 {
+    
+}
+margin-bottom:20px; background-image:url("https://s15.postimg.org/m33fpj5nf/noprofile.png"); background-repeat: no-repeat; background-size: 200px; div {
+    width: 300px;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 1-px;
+    width: 300px;
+}
+
