@@ -39,7 +39,9 @@
         <th>
             Gender
         </th>
-        <th></th>
+        <th>
+            Employment Date
+        </th>
     </tr>
 
 @foreach (var item in Model) {
@@ -63,6 +65,9 @@
             @Html.DisplayFor(modelItem => item.Gender)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.EmploymentDate)
+        </td>
+        <td>
             <div class="btn btn-link">
                  <span class="glyphicon glyphicon-pencil"></span>
                  @Html.ActionLink("Edit", "Edit", new { id=item.Id })
@@ -75,7 +80,8 @@
                 <span class="glyphicon glyphicon-trash"></span>
                 @Html.ActionLink("Delete", "Delete", new { id = item.Id })
             </div>
-</td>
+        </td>
+        
     </tr>
 }
 

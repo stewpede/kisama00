@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -41,7 +42,9 @@ namespace WebApplication1.Areas.Security.Controllers
                  ContactNo = user.ContactNo,
                  LastName = user.LastName,
                  Age = user.Age,
-                 Gender = user.Gender
+                 Gender = user.Gender,
+                 EmploymentDate = user.EmploymentDate
+                 
              }).ToList();               
                 return View(users);
 
@@ -85,20 +88,41 @@ namespace WebApplication1.Areas.Security.Controllers
 
                 using (var db = new DatabaseContext())
                 {
-                    db.Users.Add(new User
-                    {
-                       // Id = Guid.NewGuid(),
-                        FirstName = viewModel.FirstName,
+                    var sql = @"exec uspCreateUser @guid,
+	                                @fname,
+	                                @lname,
+	                                @age,
+	                                @gender,
+	                                @empDate,
+	                                @school,
+	                                @yrAttended";
+
+                    var result = db.Database.ExecuteSqlCommand(sql,
+                        new SqlParameter("@guid", Guid.NewGuid()),
+                        new SqlParameter("@fname", viewModel.FirstName),
+                        new SqlParameter("@lname", viewModel.LastName),
+                        new SqlParameter("@age", viewModel.Age),
+                        new SqlParameter("@gender", viewModel.Gender),
+                        new SqlParameter("@empDate", DateTime.UtcNow),
+                        new SqlParameter("@school", "WMSU"),
+                        new SqlParameter("@yrAttended", "2002"));
+
+                    if (result > 1)
+                        return RedirectToAction("Index");
+                    else
+                        return View();
+                   /* db.Users.Add(new User
+                   {
+                       Id = Guid.NewGuid(),
+                      FirstName = viewModel.FirstName,
                         MiddleName = viewModel.MiddleName,
-                        ContactNo = viewModel.ContactNo,
+                      ContactNo = viewModel.ContactNo,
                         LastName = viewModel.LastName,
                         Age = viewModel.Age,
                         Gender = viewModel.Gender,
                     });
-                    db.SaveChanges();
+                    db.SaveChanges();*/
                 }
-                    
-                return RedirectToAction("Index");
             }
             catch
             {
@@ -125,6 +149,7 @@ namespace WebApplication1.Areas.Security.Controllers
                     user.LastName = viewModel.LastName;
                     user.Age = viewModel.Age;
                     user.Gender = viewModel.Gender;
+                    user.EmploymentDate = viewModel.EmploymentDate;
 
                     db.SaveChanges();
 
@@ -178,7 +203,8 @@ namespace WebApplication1.Areas.Security.Controllers
                             ContactNo = user.ContactNo,
                             LastName = user.LastName,
                             Age = user.Age,
-                            Gender = user.Gender
+                            Gender = user.Gender,
+                            EmploymentDate = user.EmploymentDate
                         }).FirstOrDefault();
             }
         }

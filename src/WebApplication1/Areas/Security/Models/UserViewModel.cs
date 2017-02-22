@@ -23,5 +23,6 @@ namespace WebApplication1.Areas.Security.Models
         public int Age { get; set; }
         [Required]
         public string Gender { get; set; }
+        public DateTime? EmploymentDate { get; set; }
     }
 }
