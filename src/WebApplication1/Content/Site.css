@@ -39,7 +39,7 @@ content-action{
     color: #fff;
     background-color: #5cb85c;
     border-color: #4cae4c;
-    margin-top: 30px;
+    
 }
 .btn.btn-text {
     
@@ -94,7 +94,7 @@ dt {
     font: 0px;
     font-size: 0px;
 }
-.detailes-dl-horizontal {
+.details-dl-horizontal {
     padding-bottom: 45px;
     margin-left: 400px;
      margin-bottom: 20px;
@@ -152,7 +152,7 @@ th, td {
 tr:nth-child(even){background-color: #f2f2f2}
 
 th {
-    background-color: #4CAF50;
+    background-color: #18b1ff;
     color: white;
 }
 
