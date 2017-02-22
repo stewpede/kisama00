@@ -57,6 +57,9 @@
             @Html.DisplayFor(modelItem => item.EmploymentDate)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.Schools)
+        </td>
+        <td>
             <div class="btn btn-link">
                  <span class="glyphicon glyphicon-pencil"></span>
                  @Html.ActionLink("Edit", "Edit", new { id=item.Id })

@@ -9,12 +9,14 @@ namespace WebApplication1.Dal
 {
     public class DatabaseContext:DbContext
     {
-        public DbSet<User> Users { get; set; }
-
+        
         public DatabaseContext()
             : base("DefaultConnection")
         {
 
         }
+
+        public DbSet<User> Users { get; set; }
+        public DbSet<Education> Educations { get; set; }
     }
 }

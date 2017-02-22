@@ -41,8 +41,8 @@ namespace WebApplication1.Areas.Security.Controllers
                  LastName = user.LastName,
                  Age = user.Age,
                  Gender = user.Gender,
-                 EmploymentDate = user.EmploymentDate
-                 
+                 EmploymentDate = user.EmploymentDate,
+                 Schools = user.Educations.Select(s => s.School).ToList()
              }).ToList();               
                 return View(users);
 
@@ -59,18 +59,6 @@ namespace WebApplication1.Areas.Security.Controllers
         // GET: Security/Users/Create
         public ActionResult Create()
         {
-            ViewBag.Genders = new List<SelectListItem>{
-                new SelectListItem
-                {
-                    Value = "Male",
-                    Text = "Male",
-                },
-                new SelectListItem
-                {
-                    Value = "Female",
-                    Text = "Female"
-                },
-            };
             return View();
         }
 
@@ -196,6 +184,7 @@ namespace WebApplication1.Areas.Security.Controllers
                         where user.Id == id
                         select new UserViewModel
                         {
+                            Id = user.Id,
                             FirstName = user.FirstName,
                             LastName = user.LastName,
                             Age = user.Age,
