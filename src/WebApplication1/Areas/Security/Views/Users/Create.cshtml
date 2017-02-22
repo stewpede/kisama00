@@ -14,23 +14,23 @@
 
     <div class="form-horizontal">
         <header class="row content-header">
-            <div class="col-md-6">
-                <h2>Create User</h2>
-            </div>
-               <div class="col-md-6 content-action text-right">
+                <div class="col-md-6">
+                     <h2>Create User</h2>
+                </div>
+                 <div class="col-md-6 content-action text-right">
 
-        <a href="@Url.Action("Index")" class="btn btn-link">
-            <span class="glyphicon glyphicon-thumbs-down"></span>
-            Cancel
-        </a>
+                    <a href="@Url.Action("Index")" class="btn btn-link">
+                         <span class="glyphicon glyphicon-thumbs-down"></span>
+                        Cancel
+                     </a>
 
-        <button type="submit" value="Save" class="btn btn-success">
-            <span class="glyphicon glyphicon-thumbs-up"></span>
-            Save
-        </button>
-    </div>
+                        <button type="submit" value="Save" class="btn btn-success">
+                          <span class="glyphicon glyphicon-thumbs-up"></span>
+                         Save
+                         </button>
+                </div>
         </header>
-      </div>
+   </div>
        
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
@@ -56,8 +56,6 @@
             @Html.RadioButtonFor(model => model.Gender, "Other", false) Other
         </div>
     </div>
-
-
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.Age, htmlAttributes: new { @class = "control-label col-md-2" })
