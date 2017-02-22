@@ -118,13 +118,18 @@ namespace WebApplication1.Areas.Security.Controllers
         {
             try
             {
-              /*  var u = Users.FirstOrDefault(user => user.Id == id);
-                u.FirstName = viewModel.FirstName;
-                u.LastName = viewModel.LastName;
-                u.Age = viewModel.Age;
-                u.Gender = viewModel.Gender;*/
+                using (var db = new DatabaseContext())
+                {
+                    var user = db.Users.FirstOrDefault(u => u.Id == id);
+                    user.FirstName = viewModel.FirstName;
+                    user.LastName = viewModel.LastName;
+                    user.Age = viewModel.Age;
+                    user.Gender = viewModel.Gender;
 
-                return RedirectToAction("Index");
+                    db.SaveChanges();
+
+                    return RedirectToAction("Index");
+                }
             }
             catch
             {
