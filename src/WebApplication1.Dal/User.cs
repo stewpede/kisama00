@@ -21,7 +21,8 @@ namespace WebApplication1.Dal
         public int Age { get; set; }
         public string Gender { get; set; }
         public DateTime? EmploymentDate { get; set; }
-
+        public string School { get; set; }
+        public string YearAttended { get; set; }
         public IList <Education> Educations { get; set; }
     }
 }

@@ -24,7 +24,8 @@ namespace WebApplication1.Areas.Security.Models
         [Required]
         public string Gender { get; set; }
         public DateTime? EmploymentDate { get; set; }
-
+        public string School { get; set; }
+        public string YearAttended { get; set; }
         public IList<string> Education { get; set; }
         public IList<string> Schools { get; set; }
     }

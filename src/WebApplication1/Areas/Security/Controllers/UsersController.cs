@@ -42,6 +42,7 @@ namespace WebApplication1.Areas.Security.Controllers
                  Age = user.Age,
                  Gender = user.Gender,
                  EmploymentDate = user.EmploymentDate,
+                  YearAttended = user.YearAttended,
                  Schools = user.Educations.Select(s => s.School).ToList()
              }).ToList();               
                 return View(users);
@@ -90,8 +91,8 @@ namespace WebApplication1.Areas.Security.Controllers
                         new SqlParameter("@age", viewModel.Age),
                         new SqlParameter("@gender", viewModel.Gender),
                         new SqlParameter("@empDate", DateTime.UtcNow),
-                        new SqlParameter("@school", "WMSU"),
-                        new SqlParameter("@yrAttended", "2002"));
+                        new SqlParameter("@school", viewModel.School),
+                        new SqlParameter("@yrAttended", viewModel.YearAttended));
 
                     if (result > 1)
                         return RedirectToAction("Index");
